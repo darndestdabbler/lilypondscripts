@@ -32,7 +32,7 @@ _SPECIAL NOTE: The scripts are intended to facilitate exploration of chromatic m
   * [Muto Method](https://muto-method.com/)
 
 ## Instructions
-* Reference (via "\include") one of the configuration script files in your lilypond script
+* Reference (via "\include") one of the configuration script files in your lilypond music script file
   * Kite-4-369-Notation.ly (my favorite so far)
   * Dozenal-4-369-Notation.ly (numbered noteheads with dek and el for the last two numbers)
   * Dozenal-3-48-Notation.ly (numbered noteheads with dek and el for the last two numbers -- more compact)
