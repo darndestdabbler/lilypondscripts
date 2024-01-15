@@ -1,6 +1,7 @@
 \version "2.24.2"
 
-\include "Kite-4-369-Notation.ly"
+%\include "Kite-4-369-Notation.ly"
+\include "Oval-2-3579-Notation.ly"
 %\include "Dozenal-4-369-Notation.ly"
 %\include "Dozenal-3-48-Notation.ly"
 %\include "FlatOval-3-48-Notation.ly"   % **like Clairnote DN

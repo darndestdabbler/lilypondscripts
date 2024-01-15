@@ -10,7 +10,7 @@
 %% Dennis Mitchell, 2024-01-01
 %% Requires:
 %% Properties:
-%%   - notehead shape = hexagon
+%%   - notehead shape = semibreve
 %%     -- alternates in fill (solid, hollow)
 %%   - notehead height = 3 semitones
 %%   - staff space = 4 semitones
@@ -49,7 +49,7 @@
 
 
 #(set! cnb:semitones-per-staff-space 2)     
-#(set! cnb:default-magnify 6/4)
+#(set! cnb:default-magnify 7/4)
 
 #(set! cnb:multinote-padding -.25)
 #(set! cnb:false-hollow #t)
@@ -379,7 +379,7 @@
 #(cnb:populate-ledger-hashes)
 
 %#(cnb:display-hash-table cnb:ledgers-by-notehead-position)#(newline)
-%#(display (cnb:get-ledger-positions))
+
 
 \layout {
   \context {

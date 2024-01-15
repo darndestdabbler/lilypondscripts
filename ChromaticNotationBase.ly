@@ -501,8 +501,8 @@
              (stencil       notehead-stencil)
              (x-extent      (ly:stencil-extent stencil 0))
              (width         (- (cdr x-extent) (car x-extent)))
-             (ledger-length (+ width (* width 1/3)))
-             (translate     (if (<= x-offset mag) (* width 1/3) (+ (/ x-offset 2) (* width 1/3))))
+             (ledger-length (* width 4/3))
+             (start         (-(car x-extent)(* width 1/6)))
              )
         (for-each (lambda (x)
            (let* (
@@ -513,7 +513,7 @@
                        (grob-interpret-markup grob                                                        
                           (markup 
                              #:override `((thickness . ,(* 2 mag)))
-                             #:translate `(,translate . ,x)
+                             #:translate `(,start . ,x)
                              #:draw-line `(,ledger-length . 0)))
                         (let* (
                                 (entry (hashv-ref cnb:ledgers-by-offset (/ x mag)))   
@@ -522,12 +522,13 @@
                                 (thickness (* mag (or (assq-ref entry 'thickness ) 2) ))
                                 (len-factor (or (assq-ref entry 'length-factor) 1.0))
                                 (adj-len (* ledger-length len-factor))
-                                (adj-start (if (> x-offset mag) (- translate (- mag 1)) (- translate (* (- mag 1) 2) ))))
+                                (adj-start (-(car x-extent)(* width 1/6 len-factor)))
+                                )
+                          
                             (grob-interpret-markup grob                                                                       
                                   (if (not dash)
                                     (markup  
                                       #:override `((thickness . ,thickness))
-                                       ;#:translate `(,adj-start . ,x)
                                        #:translate `(,adj-start . ,x)
                                        #:with-color color
                                        #:draw-line `(,adj-len . 0))
@@ -761,12 +762,14 @@
 
 
 #(define (cnb:custom-ledger-line grob orig)
+   (if (not (ly:stencil? orig)) (grob-interpret-markup grob (markup "")) 
       (let*  (
           (note-heads (ly:grob-array->list(ly:grob-object grob 'note-heads)))
           (note-head (first note-heads))
           (expr (ly:stencil-expr orig))
           (mag (magstep (ly:grob-property note-head 'font-size 0.0)))
-          (stencils (cdr (third expr)))
+          (third-item (third expr))
+          (stencils (if (eq? (car third-item) 'translate-stencil) (list third-item) (cdr (third expr))))
           (stencil-params 
            (map (lambda (s)
                   `(
@@ -811,6 +814,7 @@
             ) stencil-params)
 
       new-stencil
+      )
       )) 
 
 
