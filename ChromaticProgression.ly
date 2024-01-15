@@ -6,7 +6,7 @@
 %\include "Dozenal-3-48-Notation.ly"
 %\include "FlatOval-3-48-Notation.ly"   % **like Clairnote DN
 %\include "Semibreve-2-06-Notation.ly"
-%\include "ChromaticNotationBase.ly" % default produces Oval 2-3579 Notation
+%\include "ChromaticNotationBase.ly" % default produces Oval 2-024 Notation
 %\include "Jianpu.ly"
 
 %compare to Clairnote (which is more fully implemented) ...
@@ -28,17 +28,16 @@
 
 \book {
   %comment out the next line while testing in Frescobaldi; otherwise, viewer can't find the file
-  \bookOutputName #(string-append "JoyToTheWorld" cnb:file-suffix)
+  \bookOutputName #(string-append "Chromatic Progression" cnb:file-suffix)
   \header {
-    title="Joy to the World"
-    composer = "Isaac Watts & Lowell Mason"    
+    title="Chromatic Progression"
   }
 
   \markup  { #cnb:notation-label \footnote "*" #cnb:notation-footnote }
 
   \paper {
     indent = #cnb:indent  
-    left-margin = #25
+    left-margin = #5
     right-margin = #5
     system-system-spacing =
       #'((basic-distance . 12) 
@@ -47,28 +46,31 @@
          (stretchability . 60)) % defaults: 12, 8, 1, 60
   }
 
-
   \new Staff
-  \with {
-        \magnifyStaff #cnb:default-magnify
-      }
+    \with {
+          \magnifyStaff #cnb:default-magnify
+        }
+  
   \relative {
+     \time 5/4
+     \key c \major %% key needs to be explicitly set!
      \clef treble
-     \key d \major
-     \time 2/4
-     d''4 cis8. b16 | a4. g8 | fis4 e | d4. a'8 |  b4. b8 | cis4. cis8 | \break
-     d4. d8 | d( cis) b( a) | a8.( g16 fis8) d' | d( cis) b( a) | a8.( g16 fis8) fis | \break
-     fis fis fis fis16( g) | a4. g16( fis) | e8 e e e16( fis) |  \break
-     g4. fis16( e) | d8( d'4) b8 | a8.( g16 fis8) g8 | fis4 e | d2
+      c4 cis4 d4 dis4 e4 | f4 fis4 g4 gis4 a4 | ais4 b4 c4 cis4 d4 | dis4 e4 f4 fis4 g4 | gis4 a4 ais4 b4 c4 | 
      \fine
    }
-   \addlyrics {
-     \set fontSize = #0 
-     Joy to the world! The Lord is come;
-     Let Earth re- ceive her King;
-     Let every __ _  heart __ pre- pare __ him __ room __ And
-     hea- ven and nature sing And 
-     hea- ven and nature sing And 
-     heaven and heaven and na- ture sing.
+
+  \new Staff
+    \with {
+          \magnifyStaff #cnb:default-magnify
+        }
+  
+  \relative {
+    \time 5/4
+     \key c \major %% key needs to be explicitly set!
+     \clef treble
+      c''4 cis4 d4 dis4 e4 | f4 fis4 g4 gis4 a4 | ais4 b4 c4 cis4 d4 | dis4 e4 f4 fis4 g4 | gis4 a4 ais4 b4 c4 | 
+     \fine
    }
+
 }
+ 

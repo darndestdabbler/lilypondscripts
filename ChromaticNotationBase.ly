@@ -71,15 +71,16 @@
 %%           CONFIGURATIONS
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#(define cnb:file-suffix "-Oval-2-3579-Notation")
-#(define cnb:notation-label "Oval 2-3579 Notation")
-#(define cnb:notation-footnote "*2-3579 Notation: notehead height = 2 semitones; staff lines at +/- 3, 5, 7, & 9 semitones")
+#(define cnb:file-suffix "-Oval-2-024-Notation")
+#(define cnb:notation-label "Oval 2-024 Notation")
+#(define cnb:notation-footnote "*2-024 Notation: notehead height = 2 semitones; staff lines at 0 & +/- 2, 4 semitones")
 #(define cnb:semitones-per-staff-space 2)   
 
 #(define cnb:default-magnify 7/4)
+#(define cnb:indent 0) %% if using custom ledger lines, use this for paper indent 
 
-#(define cnb:staff-line-positions '(-9 -7 -5 -3 3 5 7 9))
-#(define cnb:ledger-positions '(-33 -31 -29 -27 -25 -21 -19 -17 -15 -13 -1 11 15 17 19 21 23 27 29 31 33 35))
+#(define cnb:staff-line-positions '(-4 -2 0 2 4 ))
+#(define cnb:ledger-positions '(-24 -22 -20 -18 -16 -14 -12 -10 -8 -6 6 8 10 12 14 16 18 20 22 24))
 
 #(define cnb:false-hollow #f)
 
@@ -795,7 +796,8 @@
                      (len (- end start))
                      (len-factor (or (assq-ref entry 'length-factor) 1.0))
                      (adj-len (* len len-factor))
-                     (adj-start (- start (/ (- adj-len len) 2)))
+                     ;;note: paper indent affects position of custom leger lines!
+                     (adj-start (- (- start (/ (- adj-len len) 2)) (/ cnb:indent mag)))
                      (stencil (grob-interpret-markup grob                                                                       
                         (if (not dash)
                           (markup  
@@ -897,7 +899,7 @@
 
 
 \paper {
-  indent = #0
+  indent = #cnb:indent
   left-margin = #5
   right-margin = #5
   system-system-spacing =
@@ -907,17 +909,3 @@
        (stretchability . 60)) % defaults: 12, 8, 1, 60
 }
 
-
-%\new Staff
-%  \with {
-%        \magnifyStaff #7/4
-%      }
-%
-%\relative {
-%   \clef treble
-%   \key dis \major
-%   \time 4/4
-%    c'4 cis4 d4 dis4 | e4 f4 fis4 g4 | gis4 a4 ais4 b4 |  c4 cis4 d4 dis4 | e4 f4 fis4 g4 | gis4 a4 ais4 b4 
-%
-%   \fine
-% }

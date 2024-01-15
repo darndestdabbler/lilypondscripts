@@ -120,27 +120,3 @@
    ))
 
 
-\paper {
-  indent = #0
-  left-margin = #5
-  right-margin = #5
-  system-system-spacing =
-    #'((basic-distance . 12) 
-       (minimum-distance . 8)
-       (padding . 4)
-       (stretchability . 60)) % defaults: 12, 8, 1, 60
-}
-
-%\new Staff
-%  \with {
-%        \magnifyStaff #7/4
-%      }
-%
-%\relative {
-%   \clef treble
-%   \key c \major
-%   \time 4/4
-%    c'4 cis4 d4 dis4 | e4 f4 fis4 g4 | gis4 a4 ais4 b4 |  c4 cis4 d4 dis4 | e4 f4 fis4 g4 | gis4 a4 ais4 b4 
-%
-%   \fine
-% }

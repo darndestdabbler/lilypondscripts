@@ -5,6 +5,7 @@
 #(define cnb:notation-label "Jianpu Notation")
 #(define cnb:notation-footnote "*https://en.wikipedia.org/wiki/Numbered_musical_notation")
 #(define cnb:default-magnify 6/4)
+#(define cnb:indent 0)
 
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%            DIATONIC MAP

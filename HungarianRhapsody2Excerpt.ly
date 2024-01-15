@@ -18,9 +18,12 @@
   \markup  { #cnb:notation-label \footnote "*" #cnb:notation-footnote }
 
 
+%if explicitly setting paper indent, use this variable to ensure 
+%that custom ledger lines are aligned properly 
+#(set! cnb:indent  10)
 
   \paper {
-    indent = #0
+    indent = #cnb:indent
     left-margin = #10
     right-margin = #10
     system-system-spacing =

@@ -49,7 +49,7 @@
 
 
 #(set! cnb:semitones-per-staff-space 2)     
-#(set! cnb:default-magnify 7/4)
+#(set! cnb:default-magnify 6/4)
 
 #(set! cnb:multinote-padding -.25)
 #(set! cnb:false-hollow #t)

@@ -49,7 +49,7 @@
 
 #(set! cnb:semitones-per-staff-space 4)          
 #(set! cnb:staff-line-positions '(-4 -2  2 4 ))
-#(set! cnb:ledger-positions '(-26 -22 -18 -14 -10 0 10 14 18 22 26))
+#(set! cnb:ledger-positions '(-22 -20 -16 -14 -10 -8 8 10 14 16 20 22))
 #(set! cnb:multinote-padding -.25)
 #(set! cnb:false-hollow #t)
 
